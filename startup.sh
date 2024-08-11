@@ -33,5 +33,8 @@ fi
 # Start PHP-FPM
 php-fpm &
 
+# Ensure the var directory is writable
+chown -R www-data:www-data /var/www/html/var
+
 # Start Nginx
 nginx -g 'daemon off;'
