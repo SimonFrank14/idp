@@ -1,5 +1,5 @@
 # Use the official PHP image with FPM as the base image
-FROM php:8.2-fpm AS base
+FROM php:8.3-fpm AS base
 
 # Install dependencies and PHP extensions
 RUN apt-get update && apt-get install -y \
@@ -74,9 +74,7 @@ RUN apt-get update && apt-get install -y \
     && rm -rf /var/lib/apt/lists/*
 
 # Install Node.js and npm
-RUN curl -fsSL https://deb.nodesource.com/setup_18.x | bash - \
-    && apt-get install -y nodejs \
-    && npm install -g npm@latest
+RUN apt-get update && apt-get install -y nodejs npm
 
 # Install Node.js dependencies and build the assets
 RUN npm install \
