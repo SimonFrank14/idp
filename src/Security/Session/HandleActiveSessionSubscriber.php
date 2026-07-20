@@ -43,6 +43,8 @@ class HandleActiveSessionSubscriber implements EventSubscriberInterface {
             Types::DATETIME_IMMUTABLE,
             Types::STRING
         ]);
+
+        $this->sessionToSave = null;
     }
 
     public function onInteractiveLogin(InteractiveLoginEvent $event): void {

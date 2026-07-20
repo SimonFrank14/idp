@@ -79,6 +79,7 @@ class ActiveSessionsResolver {
         $table->addColumn('ip_address', Types::STRING, ['length' => 45, 'notnull' => false ]);
         $table->addForeignKeyConstraint('user', ['user_id'], ['id'], ['onUpdate' => 'CASCADE', 'onDelete' => 'CASCADE']);
         $table->addForeignKeyConstraint('sessions', ['session_id'], ['sess_id'], ['onUpdate' => 'CASCADE', 'onDelete' => 'CASCADE']);
+        $table->addUniqueConstraint(['user_id', 'session_id']);
 
         $schemaManager->createTable($table);
     }
